@@ -1,0 +1,44 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class ConnectionProv {
+
+	
+	  Connection con;
+	
+	
+	
+	
+	public ConnectionProv() throws ClassNotFoundException, SQLException
+	{
+		Class.forName("org.postgresql.Driver");
+		con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres","postgres", "Yannic99");
+		
+	}
+	
+	
+	
+	
+	
+	public void getKunde(String titelv,String vorname, String nachname,String titeln) throws SQLException
+	{
+		PreparedStatement prest = null;
+		prest =con.prepareStatement("insert into kunde (?,?,?,?)");
+		
+		prest.setString(1, titelv);
+		prest.setString(2, vorname);
+		prest.setString(3, nachname);
+		prest.setString(4, titeln);
+		
+		prest.executeUpdate();
+		
+	}
+	
+	
+	
+	
+	
+	
+}
