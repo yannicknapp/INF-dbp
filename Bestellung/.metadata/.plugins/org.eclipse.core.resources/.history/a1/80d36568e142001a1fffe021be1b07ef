@@ -1,0 +1,79 @@
+package tirol_htl_anichstrasse;
+
+import java.util.Scanner;
+
+public class MainTable {
+	
+	
+	
+
+	public static void getTable(String name) {
+		// TODO Auto-generated method stub
+		
+		while(true)
+        {
+		Scanner scanner = new Scanner(System.in);
+        int crud;
+        do
+        {
+            System.out.println();
+            System.out.println("1 für "+name+" erstellen");
+            System.out.println("2 für "+name+" anzeigen");
+            System.out.println("3 für "+name+" loeschen");
+            System.out.println("4 für "+name+" bearbeiten");
+            System.out.println("5 wenn Sie zurueck ins Hauptmenü wollen.");
+            System.out.println();
+            System.out.println();
+            System.out.print("Eingabe: ");
+            crud = scanner.nextInt();
+            System.out.flush();
+        }while(crud < 1 || crud > 6);
+        
+        if(crud==1)
+        {
+        	if(name.equals("Kunden"))
+        	{
+        		createKunde();
+        	}
+        	if(name.equals("Bestellungen"))
+        	{
+        		
+        	}
+        	if(name.equals("Adressen"))
+        	{
+        		
+        	}
+        	if(name.equals("Artikel"))
+        	{
+        		
+        	}
+        	
+        }
+        }
+		
+	}
+
+	private static void createKunde() {
+		// TODO Auto-generated method stub
+		String vorname;
+		String nachname;
+		String titelv;
+		String titeln;
+		Scanner scanner = new Scanner(System.in);
+        int crud;
+        do
+        {
+            System.out.println();
+            System.out.println("Vorname: "); vorname=scanner.ne
+            System.out.println("Nachname: ");
+            System.out.println("Titelv: ");
+            System.out.println("Titeln: ");
+            crud = scanner.nextInt();
+            System.out.flush();
+        }while(crud < 1 || crud > 6);
+		
+	}
+
+	
+
+}

@@ -1,0 +1,24 @@
+package tirol_htl_anichstrasse;
+import java.sql.SQLException;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+public class Bestellung {
+
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+
+		Kunde customer=new Kunde();
+		
+		customer.setNachname("Pius");
+		EntityManagerFactory f= Persistence.createEntityManagerFactory("MyUnit");
+    	EntityManager m= f.createEntityManager();
+		//con.createKunde("v","anton","peter","n");
+		//con.deleteKunde(1);
+		//con.updateKunde("Vorname", "domi", 2);
+			
+	}
+
+}

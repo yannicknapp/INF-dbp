@@ -1,0 +1,12 @@
+package tirol_htl_anichstrasse;
+
+public class MainTable {
+
+	public static void getTable(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+
+}

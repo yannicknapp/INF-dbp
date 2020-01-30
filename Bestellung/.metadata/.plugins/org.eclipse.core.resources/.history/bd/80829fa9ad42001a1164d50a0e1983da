@@ -1,0 +1,36 @@
+package tirol_htl_anichstrasse;
+
+import java.util.Scanner;
+
+public class MainTable {
+
+	public static void getTable(String name) {
+		// TODO Auto-generated method stub
+		
+		while(true)
+        {
+		Scanner scanner = new Scanner(System.in);
+        int table;
+        do
+        {
+            System.out.println();
+            System.out.println("1 für "+name+" erstellen");
+            System.out.println("2 für "+name+" anzeigen");
+            System.out.println("3 für "+name+" loeschen");
+            System.out.println("4 für "+name+" bearbeiten");
+            System.out.println("5 wenn Sie zurueck ins Hauptmenü wollen.");
+            System.out.println();
+            System.out.println();
+            System.out.print("Eingabe: ");
+            table = scanner.nextInt();
+            System.out.flush();
+        }while(table < 1 || table > 5);
+          
+            
+        }
+		
+	}
+
+	
+
+}

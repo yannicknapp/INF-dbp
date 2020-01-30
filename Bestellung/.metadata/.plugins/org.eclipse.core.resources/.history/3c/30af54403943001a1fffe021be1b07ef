@@ -1,0 +1,285 @@
+package tirol_htl_anichstrasse;
+
+import java.util.Scanner;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+public class MainTable {
+	
+	
+	
+
+	public static void getTable(String name) {
+		// TODO Auto-generated method stub
+		
+		while(true)
+        {
+		Scanner scanner = new Scanner(System.in);
+        int crud;
+        do
+        {
+            System.out.println();
+            System.out.println("1 für "+name+" erstellen");
+            System.out.println("2 für "+name+" loeschen");
+            System.out.println("3 für "+name+" bearbeiten");
+            System.out.println("4 wenn Sie zurueck ins Hauptmenü wollen.");
+            System.out.println();
+            System.out.println();
+            System.out.print("Eingabe: ");
+            crud = scanner.nextInt();
+            System.out.flush();
+        }while(crud < 1 || crud > 6);
+        
+        if(crud==1)
+        {
+        	if(name.equals("Kunden"))
+        	{
+        		createKunde();
+        	}
+        	if(name.equals("Bestellungen"))
+        	{
+        		createBestellung();
+        	}
+        	if(name.equals("Adressen"))
+        	{
+        		createAdresse();
+        	}
+        	if(name.equals("Artikel"))
+        	{
+        		createArtikel();
+        	}
+        	
+        }
+        
+		
+		if(crud==2)
+        {
+        	if(name.equals("Kunden"))
+        	{
+        		deleteKunde();
+        	}
+        	if(name.equals("Bestellungen"))
+        	{
+        		
+        	}
+        	if(name.equals("Adressen"))
+        	{
+        		deleteAdresse();
+        	}
+        	if(name.equals("Artikel"))
+        	{
+        		
+        	}
+        }
+		
+		if(crud==3)
+        {
+        	if(name.equals("Kunden"))
+        	{
+        		updateKunde();
+        	}
+        	if(name.equals("Bestellungen"))
+        	{
+        		
+        	}
+        	if(name.equals("Adressen"))
+        	{
+        		
+        	}
+        	if(name.equals("Artikel"))
+        	{
+        		
+        	}
+        }
+		if(crud==4)
+        {
+        	return;
+        }
+        	
+        }
+		
+	}
+
+	private static void createBestellung() {
+		// TODO Auto-generated method stub
+		Scanner scanner = new Scanner(System.in);
+        
+		
+        
+        System.out.println();
+        System.out.println("Artikel ID: "); name=scanner.next();
+        System.out.println("Preis: "); int preis = scanner.nextInt();
+        System.out.flush();
+		
+        EntityManagerFactory f= Persistence.createEntityManagerFactory("MyUnit");
+    	EntityManager m= f.createEntityManager();
+        Artikel a=m.find(Artikel.class, name);
+		BestellungArtikel b=new BestellungArtikel();
+		b.setArtikel_id(1);
+		b.setMenge(2);
+		
+    	m.getTransaction().begin();
+    	m.persist(b);
+  		m.getTransaction().commit();
+		
+	}
+
+	private static void createArtikel() {
+		// TODO Auto-generated method stub
+		String name;
+		double preis;
+		
+		Scanner scanner = new Scanner(System.in);
+        
+        
+        System.out.println();
+        System.out.println("Artikelname: "); name=scanner.next();
+        System.out.println("Preis: "); preis=scanner.nextInt();
+        System.out.flush();
+        
+        Artikel artikel=new Artikel();
+		artikel.setName(name);
+		artikel.setPreis(preis);
+		EntityManagerFactory f= Persistence.createEntityManagerFactory("MyUnit");
+    	EntityManager m= f.createEntityManager();
+    	m.getTransaction().begin();
+    	m.persist(artikel);
+  		m.getTransaction().commit();
+		
+	}
+
+	private static void deleteAdresse() {
+		// TODO Auto-generated method stub
+		Scanner scanner = new Scanner(System.in);
+		long id;
+		System.out.println();
+        System.out.println("ID der Adresse die gelöscht werden soll: "); id=scanner.nextLong();
+        
+        System.out.flush();
+		
+		EntityManagerFactory f= Persistence.createEntityManagerFactory("MyUnit");
+    	EntityManager m= f.createEntityManager();
+		Adresse k=m.find(Adresse.class,id);
+		m.getTransaction().begin();
+		m.remove(k);
+		m.getTransaction().commit();
+		
+	}
+
+	private static void createAdresse() {
+		// TODO Auto-generated method stub
+		
+		String stadt;
+		String strasse;
+		String hnr;
+		long plz;
+		Scanner scanner = new Scanner(System.in);
+        
+        
+        System.out.println();
+        System.out.println("Stadt: "); stadt=scanner.next();
+        System.out.println("Strasse: "); strasse=scanner.next();
+        System.out.println("Postleitzahl: "); hnr=scanner.next();
+        System.out.println("Hausnummer: "); plz=scanner.nextLong();
+        System.out.flush();
+        
+        Adresse adresse=new Adresse();
+		adresse.setHnr(hnr);
+		adresse.setPlz(plz);
+		adresse.setStadt(stadt);
+		adresse.setStrasse(strasse);
+		EntityManagerFactory f= Persistence.createEntityManagerFactory("MyUnit");
+    	EntityManager m= f.createEntityManager();
+    	m.getTransaction().begin();
+    	m.persist(adresse);
+  		m.getTransaction().commit();
+		
+	}
+
+	private static void updateKunde() {
+		// TODO Auto-generated method stub
+		String vorname;
+		String nachname;
+		String titelv;
+		String titeln;
+		long id;
+		Scanner scanner = new Scanner(System.in);
+        
+        
+        System.out.println();
+        System.out.println("ID des Kunden: "); id=scanner.nextLong();
+        System.out.println("Vorname: "); vorname=scanner.next();
+        System.out.println("Nachname: "); nachname=scanner.next();
+        System.out.println("Titelv: "); titelv=scanner.next();
+        System.out.println("Titeln: "); titeln=scanner.next();
+        System.out.flush();
+        
+        EntityManagerFactory f= Persistence.createEntityManagerFactory("MyUnit");
+    	EntityManager m= f.createEntityManager();
+		Kunde k=m.find(Kunde.class,id);
+		k.setVorname(vorname);
+		k.setNachname(nachname);
+		k.setTiteln(titeln);
+		k.setTitelv(titelv);
+		System.out.println(k);
+		m.getTransaction().begin();
+    	m.persist(k);
+  		m.getTransaction().commit();
+		
+	}
+
+	private static void deleteKunde() {
+		// TODO Auto-generated method stub
+		
+		Scanner scanner = new Scanner(System.in);
+		long id;
+		System.out.println();
+        System.out.println("ID des Kunden der gelöscht werden soll: "); id=scanner.nextLong();
+        
+        System.out.flush();
+		
+		EntityManagerFactory f= Persistence.createEntityManagerFactory("MyUnit");
+    	EntityManager m= f.createEntityManager();
+		Kunde k=m.find(Kunde.class,id);
+		m.getTransaction().begin();
+		m.remove(k);
+		m.getTransaction().commit();
+
+		
+	}
+
+	private static void createKunde() {
+		// TODO Auto-generated method stub
+		String vorname;
+		String nachname;
+		String titelv;
+		String titeln;
+		Scanner scanner = new Scanner(System.in);
+        
+        
+        System.out.println();
+        System.out.println("Vorname: "); vorname=scanner.next();
+        System.out.println("Nachname: "); nachname=scanner.next();
+        System.out.println("Titelv: "); titelv=scanner.next();
+        System.out.println("Titeln: "); titeln=scanner.next();
+        System.out.flush();
+        
+        Kunde customer=new Kunde();
+		customer.setNachname(nachname);
+		customer.setVorname(vorname);
+		customer.setTiteln(titeln);
+		customer.setTitelv(titelv);
+		EntityManagerFactory f= Persistence.createEntityManagerFactory("MyUnit");
+    	EntityManager m= f.createEntityManager();
+    	m.getTransaction().begin();
+    	m.persist(customer);
+  		m.getTransaction().commit();
+        
+		
+	}
+
+	
+
+}

@@ -1,0 +1,67 @@
+package tirol_htl_anichstrasse;
+
+import java.sql.SQLException;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
+
+@Entity
+@Getter
+@Setter (AccessLevel.PUBLIC)
+public class BestellenArtikel {
+	@Id
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	private long bestell_id;
+	private int artikel_id;
+	private int menge;
+	
+	public BestellenArtikel(int id,int a,int m) throws SQLException
+	{
+		
+		this.id=id;this.artikel_id=a;this.menge=m;
+	}
+	
+	public BestellenArtikel()
+	{
+		
+	}
+	
+	@Override
+	public String toString()
+	{
+		return "Artikel bestellen [Bestellung=" + bestell_id + ", Artikel=" + artikel_id + ", Menge=" + menge +  "]";
+	}
+
+	public long getBestell_id() {
+		return bestell_id;
+	}
+
+	public void setBestell_id(long bestell_id) {
+		this.bestell_id = bestell_id;
+	}
+
+	public int getArtikel_id() {
+		return artikel_id;
+	}
+
+	public void setArtikel_id(int artikel_id) {
+		this.artikel_id = artikel_id;
+	}
+
+	public int getMenge() {
+		return menge;
+	}
+
+	public void setMenge(int menge) {
+		this.menge = menge;
+	}
+	
+	
+
+}
